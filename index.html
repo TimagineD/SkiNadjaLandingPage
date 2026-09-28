@@ -58,7 +58,7 @@
     /* Build the decorative strip and centered header. */
     .strip {
       height: clamp(14px, 3.4vw, 40px);
-      background: var(--blue);
+      background: var(--ink);
     }
 
     .header {
@@ -80,6 +80,10 @@
       font-weight: 800;
       font-size: clamp(1.6rem, 3.3vw, 3rem);
       line-height: 1.15;
+    }
+
+    .header p {
+            font-size: clamp(1.25rem, 1.6vw, 1.35rem);
     }
 
     .header h1 span {
@@ -380,7 +384,7 @@
   <!-- Render the logo and page title. -->
   <header class="header">
     <div class="logo" role="img" aria-label="Ski Nadja logo"></div>
-    <h1>СКИ НАДЈА</h1><span>Вашата незаборавна зимска авантура</span>
+    <h1>СКИ НАДЈА</h1><p>Вашата незаборавна зимска авантура</p>
   </header>
 
   <!-- Render the three equipment feature sections. -->
@@ -492,7 +496,7 @@
       // Read the submitted form controls.
       var f = e.target;
       // Compose the WhatsApp message from the form values.
-      var text = "Hello Ski Nadja, I'm " + f.name.value + ". I'm interested in: " + f.topic.value + "." +
+      var text = "" + f.name.value + ". Заинтересиран за: " + f.topic.value + "." +
         (f.msg.value ? "\n" + f.msg.value : "");
       // Open a prefilled WhatsApp message in a new window.
       window.open("https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text), "_blank", "noopener");
