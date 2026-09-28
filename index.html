@@ -351,7 +351,7 @@
 .spark i{
   display:block; font-style:normal; line-height:1;
   font-size:var(--s); color:#fff; opacity:var(--o);
-  text-shadow:0 0 6px rgba(255,255,255,.95), 0 0 14px rgba(170,215,250,.85);
+  text-shadow:0 0 6px rgba(255,255,255,.95), 0 0 14px rgba(234, 234, 234, 0.85);
   animation:spark-sway var(--sw) ease-in-out infinite alternate,
             spark-spin var(--d) linear infinite;
 }
@@ -588,7 +588,25 @@
   resize(); populate(); start();
 })();
 
-
+/* ---------------- CSS layer: a few big ❄ sparkles ---------------- */
+(function(){
+  const holder=document.getElementById('snow-sparks');
+  if(!holder || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const CHARS=['❄','❅','❆'];
+  const N=window.innerWidth<640 ? 6 : 10;
+  for(let i=0;i<N;i++){
+    const s=document.createElement('span'); s.className='spark';
+    const f=document.createElement('i'); f.textContent=CHARS[i%CHARS.length];
+    s.style.setProperty('--x',(Math.random()*100).toFixed(2)+'vw');
+    s.style.setProperty('--d',(11+Math.random()*10).toFixed(2)+'s');
+    s.style.setProperty('--delay',(-Math.random()*20).toFixed(2)+'s'); // already mid-fall on load
+    s.style.setProperty('--s',Math.round(10+Math.random()*10)+'px');
+    s.style.setProperty('--o',(0.45+Math.random()*0.4).toFixed(2));
+    s.style.setProperty('--sw',(2.5+Math.random()*3).toFixed(2)+'s');
+    s.style.setProperty('--amp',Math.round(10+Math.random()*18)+'px');
+    s.appendChild(f); holder.appendChild(s);
+  }
+})();
 </script>
 </body>
 
